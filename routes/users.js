@@ -16,7 +16,7 @@ router.patch('/:id', function(req, res, next) {
 
 router.delete('/:id', function(req, res, next) {
   console.log("request-----" , req.params.id)
-  res.send({action :"deleted data" , id:req.params.id });
+  res.send({action :"deleted data on heroku after updating api" , id:req.params.id });
 });
 
 
