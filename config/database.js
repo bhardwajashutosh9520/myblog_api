@@ -6,7 +6,7 @@ class Database {
       if (process.env.NODE_ENV === 'development') {
         // mongoose.set('debug', true);
       }
-      await mongoose.connect(dbUrl || process.env.DB_URL, {
+      await mongoose.connect(dbUrl || process.env.MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
