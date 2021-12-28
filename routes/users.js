@@ -3,6 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+  console.log("in on one0-------------")
   res.send({name:"Ashutosh Bhardwaj" , age :24, rolllNo : 5688792});
 });
 
