@@ -1,32 +1,16 @@
 const mongoose = require('mongoose');
 
-class Database {
-  static async connect(dbUrl = false) {
-    try {
-      if (process.env.NODE_ENV === 'development') {
-        // mongoose.set('debug', true);
-      }
-      await mongoose.connect(
-        'mongodb+srv://ashutosh9520:abblogdb@cluster0.gaylg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-        {
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
-        },
-      );
-      console.log('Database Connected at', { time: new Date() });
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  static async disconnect() {
-    try {
-      await mongoose.connection.close();
-      console.info('Database Disconnected', { time: new Date() });
-    } catch (err) {
-      console.error(err);
-    }
-  }
-}
-
-module.exports = Database;
+mongoose
+  .connect(
+    'mongodb+srv://ashutosh9520:abblogdb@cluster0.gaylg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+  )
+  .then(() => {
+    console.log('connection is established.');
+  })
+  .catch((err) => {
+    console.log('database connsection error-----', err);
+  });

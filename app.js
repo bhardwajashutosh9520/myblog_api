@@ -1,14 +1,14 @@
 const createError = require('http-errors');
 const express = require('express');
-const Database = require('./config/database');
-// require('./config/database');
+// const Database = require('./config/database');
+require('./config/database');
 require('dotenv').config();
 const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-Database.connect();
+// Database.connect();
 // imported routes
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
