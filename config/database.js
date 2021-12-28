@@ -1,13 +1,29 @@
 const mongoose = require('mongoose');
 
-mongoose
-  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/abBlog', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log('connection is established.', process.env.MONGODB_URI);
-  })
-  .catch((err) => {
-    console.log('database connsection error-----', err);
-  });
+class Database {
+  static async connect(dbUrl = false) {
+    try {
+      if (process.env.NODE_ENV === 'development') {
+        // mongoose.set('debug', true);
+      }
+      await mongoose.connect(dbUrl || process.env.DB_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      console.log('Database Connected at', { time: new Date() });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  static async disconnect() {
+    try {
+      await mongoose.connection.close();
+      console.info('Database Disconnected', { time: new Date() });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}
+
+module.exports = Database;
