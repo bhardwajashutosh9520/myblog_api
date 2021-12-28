@@ -6,10 +6,13 @@ class Database {
       if (process.env.NODE_ENV === 'development') {
         // mongoose.set('debug', true);
       }
-      await mongoose.connect(dbUrl || process.env.MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
+      await mongoose.connect(
+        'mongodb+srv://ashutosh9520:abblogdb@cluster0.gaylg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+        {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+        },
+      );
       console.log('Database Connected at', { time: new Date() });
     } catch (err) {
       console.error(err);
