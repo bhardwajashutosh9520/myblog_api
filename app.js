@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+require("./config/database")
 const cors = require('cors')
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -13,8 +14,6 @@ const usersRouter = require('./routes/users');
 
 // express
 const app = express();
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
