@@ -15,7 +15,6 @@ class Database {
       console.error(err);
     }
   }
-
   static async disconnect() {
     try {
       await mongoose.connection.close();
