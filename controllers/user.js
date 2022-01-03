@@ -9,6 +9,27 @@ class UserController {
       throw error;
     }
   }
+
+  static async getUserData(req, res) {
+    try {
+      const data = req.body;
+      const result = await userService.find(data);
+      return res.send(result);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async updateUser(req, res) {
+    try {
+      const data = req.body;
+      const id = req.params.id;
+      const result = await userService.update({ _id: id }, data);
+      return res.send(result);
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 module.exports = UserController;
