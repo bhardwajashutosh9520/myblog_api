@@ -7,8 +7,8 @@ const UserSchema = new mongoose.Schema(
     auth0Id: { type: String, required: true },
     mobile: { type: Number },
     name: {
-      firstName: { type: String, required: true },
-      lastName: { type: String, required: true },
+      firstName: { type: String },
+      lastName: { type: String },
     },
     avatarUrl: { type: String },
     address: {
@@ -16,6 +16,7 @@ const UserSchema = new mongoose.Schema(
       state: { type: String },
       country: { type: String },
     },
+    completedStage: { type: String, enum: ['profile', 'avatar', 'address'] },
   },
   { timestamps: true },
 );
